@@ -852,7 +852,7 @@ parallel.
 
 ## Part 2: Dockers
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/Fqfr_whk
 
 In Part 2, we will use Docker to test and deploy the Rent-A-Cat website that
 we tested in Deliverable 3.  We will test the website using the Selenium
