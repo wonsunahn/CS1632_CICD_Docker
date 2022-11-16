@@ -41,8 +41,6 @@ public class ConnectTest {
 
     ChromeOptions graderOptions = new ChromeOptions();
     graderOptions.addArguments("--headless");
-    graderOptions.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-    graderOptions.addArguments("--no-sandbox"); // Bypass OS security model
     driver = new ChromeDriver(graderOptions);
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
