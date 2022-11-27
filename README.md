@@ -1,24 +1,24 @@
 - [CS 1632 - Software Quality Assurance](#cs-1632---software-quality-assurance)
-  * [Description](#description)
-  * [Part 1: CI/CD Pipelines](#part-1-cicd-pipelines)
-    + [Add Hello World Workflow](#add-hello-world-workflow)
-    + [Add Maven CI Workflow](#add-maven-ci-workflow)
-    + [Debug Maven CI Workflow maven_test job](#debug-maven-ci-workflow-maven_test-job)
-    + [Debug Maven CI Workflow update_dependence_graph job](#debug-maven-ci-workflow-update_dependence_graph-job)
+  - [Description](#description)
+  - [Part 1: CI/CD Pipelines](#part-1-cicd-pipelines)
+    - [Add Hello World Workflow](#add-hello-world-workflow)
+    - [Add Maven CI Workflow](#add-maven-ci-workflow)
+    - [Debug Maven CI Workflow maven\_test job](#debug-maven-ci-workflow-maven_test-job)
+    - [Debug Maven CI Workflow update\_dependence\_graph job](#debug-maven-ci-workflow-update_dependence_graph-job)
       - [GitHub Caches](#github-caches)
       - [Job Dependencies](#job-dependencies)
       - [Job Permissions](#job-permissions)
-    + [Enable Dependabot](#enable-dependabot)
-    + [Add Maven Publish Workflow](#add-maven-publish-workflow)
-    + [Adding SonarQube 3rd Party CI Test](#adding-sonarqube-3rd-party-ci-test)
-  * [Part 2: Dockers](#part-2-dockers)
-    + [Prerequisites](#prerequisites)
-    + [Do some sanity tests](#do-some-sanity-tests)
-    + [Create Docker image](#create-docker-image)
-    + [Import Selenium JUnit Tests](#import-selenium-junit-tests)
-    + [Add CI Test Workflow](#add-ci-test-workflow)
-    + [Add Docker Publish Workflow](#add-docker-publish-workflow)
-    + [Pull published Docker image and launch from desktop](#pull-published-docker-image-and-launch-from-desktop)
+    - [Enable Dependabot](#enable-dependabot)
+    - [Add Maven Publish Workflow](#add-maven-publish-workflow)
+    - [Adding SonarQube 3rd Party CI Test](#adding-sonarqube-3rd-party-ci-test)
+  - [Part 2: Dockers](#part-2-dockers)
+    - [Prerequisites](#prerequisites)
+    - [Do some sanity tests](#do-some-sanity-tests)
+    - [Create Docker image](#create-docker-image)
+    - [Import Selenium JUnit Tests](#import-selenium-junit-tests)
+    - [Add CI Test Workflow](#add-ci-test-workflow)
+    - [Add Docker Publish Workflow](#add-docker-publish-workflow)
+    - [Pull published Docker image and launch from desktop](#pull-published-docker-image-and-launch-from-desktop)
 - [Submission](#submission)
 - [Groupwork Plan](#groupwork-plan)
 
@@ -1353,6 +1353,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 ```
 
 The workflow publishes the web server Docker image to ghcr.io (the GitHub
