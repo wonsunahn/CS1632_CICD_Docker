@@ -1,31 +1,31 @@
 - [CS 1632 - Software Quality Assurance](#cs-1632---software-quality-assurance)
-  - [Description](#description)
-  - [Part 1: CI/CD Pipelines](#part-1-cicd-pipelines)
-    - [Add Hello World Workflow](#add-hello-world-workflow)
-    - [Add Maven CI Workflow](#add-maven-ci-workflow)
-    - [Debug Maven CI Workflow maven\_test job](#debug-maven-ci-workflow-maven_test-job)
-    - [Debug Maven CI Workflow update\_dependence\_graph job](#debug-maven-ci-workflow-update_dependence_graph-job)
+  * [Description](#description)
+  * [Part 1: CI/CD Pipelines](#part-1-cicd-pipelines)
+    + [Add Hello World Workflow](#add-hello-world-workflow)
+    + [Add Maven CI Workflow](#add-maven-ci-workflow)
+    + [Debug Maven CI Workflow maven_test job](#debug-maven-ci-workflow-maven_test-job)
+    + [Debug Maven CI Workflow update_dependence_graph job](#debug-maven-ci-workflow-update_dependence_graph-job)
       - [GitHub Caches](#github-caches)
       - [Job Dependencies](#job-dependencies)
       - [Job Permissions](#job-permissions)
-    - [Enable Dependabot](#enable-dependabot)
-    - [Add Maven Publish Workflow](#add-maven-publish-workflow)
-    - [Adding SonarQube 3rd Party CI Test](#adding-sonarqube-3rd-party-ci-test)
-  - [Part 2: Dockers](#part-2-dockers)
-    - [Prerequisites](#prerequisites)
-    - [Do some sanity tests](#do-some-sanity-tests)
-    - [Create Docker image](#create-docker-image)
-    - [Import Selenium JUnit Tests](#import-selenium-junit-tests)
-    - [Add CI Test Workflow](#add-ci-test-workflow)
-    - [Add Docker Publish Workflow](#add-docker-publish-workflow)
-    - [Pull published Docker image and launch from desktop](#pull-published-docker-image-and-launch-from-desktop)
+    + [Enable Dependabot](#enable-dependabot)
+    + [Add Maven Publish Workflow](#add-maven-publish-workflow)
+    + [Adding SonarQube 3rd Party CI Test](#adding-sonarqube-3rd-party-ci-test)
+  * [Part 2: Dockers](#part-2-dockers)
+    + [Prerequisites](#prerequisites)
+    + [Do some sanity tests](#do-some-sanity-tests)
+    + [Create Docker image](#create-docker-image)
+    + [Import Selenium JUnit Tests](#import-selenium-junit-tests)
+    + [Add CI Test Workflow](#add-ci-test-workflow)
+    + [Add Docker Publish Workflow](#add-docker-publish-workflow)
+    + [Pull published Docker image and launch from desktop](#pull-published-docker-image-and-launch-from-desktop)
 - [Submission](#submission)
 - [Groupwork Plan](#groupwork-plan)
 
 # CS 1632 - Software Quality Assurance
-Fall Semester 2022 - Supplementary Exercise 4
+Spring Semester 2023 - Supplementary Exercise 4
 
-* DUE: December 2 (Friday), 2022 11:59 PM
+* DUE: April 14 (Friday), 2023 11:59 PM
 
 ## Description
 
@@ -70,7 +70,7 @@ for testing and deployment.
 
 ## Part 1: CI/CD Pipelines
 
-**GitHub Classroom Link:** https://classroom.github.com/a/POAh_PBg
+**GitHub Classroom Link:** TBD
 
 In Part 1, you will learn how to create a pipeline from scratch based on the
 Rent-A-Cat application for Exercise 2, using the CI/CD support provided by
@@ -852,7 +852,7 @@ parallel.
 
 ## Part 2: Dockers
 
-**GitHub Classroom Link:** https://classroom.github.com/a/Fqfr_whk
+**GitHub Classroom Link:** TBD
 
 In Part 2, we will use Docker to test and deploy the Rent-A-Cat website that
 we tested in Deliverable 3.  We will test the website using the Selenium
@@ -891,19 +891,19 @@ download and install a web driver that matches your current Chrome browser
 (hooray!).  You can invoke Selenium Manager as follows, if you use Windows:
    
    ```
-   selenium\manager\windows\selenium-manager.exe --browser chrome
+   selenium-manager\windows\selenium-manager.exe --browser chrome
    ```
 
    If you use MacOS:
 
    ```
-   selenium/manager/macos/selenium-manager --browser chrome
+   selenium-manager/macos/selenium-manager --browser chrome
    ```
 
    If you use Linux:
 
    ```
-   selenium/manager/linux/selenium-manager --browser chrome
+   selenium-manager/linux/selenium-manager --browser chrome
    ```
 
 ### Do some sanity tests
@@ -920,8 +920,8 @@ The output from this command should end in these two lines:
 
 ```
 ...
-2022-11-15 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-11-15 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
+2023-3-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-3-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
 ```
 
 Note this starts the Tomcat web server listening on port 8080.  Try opening
@@ -1368,7 +1368,32 @@ below:
 
 ### Pull published Docker image and launch from desktop
 
-Copy the "Install from the command line" text, in my case:
+Since your repository is private, you need to authenticate to your GitHub
+repository before pulling the package.  You will use the PAT (Personal
+Authentication Token) that you generated previously for this purpose.  TO do
+so, you need to add permissions to access packages to the PAT.  On GitHub,
+go to Account > Settings > Developer Settings > Personal Access Tokens >
+Tokens (classic) to find your PAT and check write:packages (which should
+automatically check read:packages as well).  If you forgot the PAT string,
+click on "Regenerate Token" to obtain the string again.
+
+Now on the commandline do:
+
+```
+docker login ghcr.io -u <github_username>
+```
+
+It is going to ask for your password and this is where you provide your PAT.
+This is how the interaction should look like:
+
+```
+$ docker login ghcr.io -u wonsunahn
+Password: 
+Login Succeeded
+```
+
+Next, copy the "Install from the command line" text from your GitHub package
+page, which was in my case:
 
 ```
 docker pull ghcr.io/cs1632/supplementary-exercise-4-dockers-wonsunahn:main
