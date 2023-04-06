@@ -39,9 +39,9 @@ public class ConnectTest {
   public void setUp() {
     //driver = new ChromeDriver();
 
-    ChromeOptions graderOptions = new ChromeOptions();
-    graderOptions.addArguments("--headless");
-    driver = new ChromeDriver(graderOptions);
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless");
+    driver = new ChromeDriver(options);
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     js = (JavascriptExecutor) driver;
