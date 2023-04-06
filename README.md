@@ -70,7 +70,7 @@ for testing and deployment.
 
 ## Part 1: CI/CD Pipelines
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/C7iqbXqL
 
 In Part 1, you will learn how to create a pipeline from scratch based on the
 Rent-A-Cat application for Exercise 2, using the CI/CD support provided by
@@ -703,10 +703,13 @@ the pom.xml file and add the below text after the \<scm\>...\</scm\> element:
     <repository>
       <id>github</id>
       <name>GitHub Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/CS1632/supplementary-exercise-4-ci-cd-pipelines-wonsunahn</url>
+      <url>https://maven.pkg.github.com/CS1632/supplementary-exercise-4-ci-cd-junit-wonsunahn</url>
     </repository>
   </distributionManagement>
 ```
+
+Replace the repository name in the \<url\>...\</url\> element with your own
+repository name.
 
 You also need to find the artifactId and append your PittID to it so that it
 becomes unique.  If your PittID has a capital letter please convert it to
@@ -717,9 +720,6 @@ to:
 ```
 <artifactId>cs1632-cicd-junit-wahn</artifactId>
 ```
-
-Replace the repository name in the \<url\>...\</url\> element with your own
-repository name.
 
 Now we are ready to create a new release to see if this works!  Go to the
 "<> Code" tab on your GItHub repository and then click on the "Create a new
@@ -753,7 +753,7 @@ This time, let's try adding a 3rd party CI test to the maven-ci.yml
 workflow.  SonarQube is a widely used static testing tool Navigate to
 [https://sonarcloud.io](https://sonarcloud.io) and login using your GitHub
 account.  If this is your first time using SonarCloud, GitHub will ask you
-to uuthorize SonarCloud.  Click on the "Authorize SonarCloud" button.
+to authorize SonarCloud.  Click on the "Authorize SonarCloud" button.
 
 Once you are logged in, click on the "My Projects" tab.  And then click on
 "Analyze new project":
@@ -763,96 +763,62 @@ Once you are logged in, click on the "My Projects" tab.  And then click on
 Then click on the "Import an organization from GitHub" button.  Then click
 on the "CS1632" organization.  Then select "All repositories" and click on
 the "Install" button.  Then find your repository and add it to the list of
-repositories to monitor.
+repositories to monitor by clicking on the "Set Up" button:
 
-Once you have your repository registered, go into your repository and follow
-these steps:
+<img alt="Set up project" src=img/sonarcloud_setup.png>
 
-1. Go to Administration > Analysis Method.  On the page, turn of "Automatic
-   Analysis".
+This will take you to the project set up page where you are asked to choose
+an analysis method.  Click on the "With GitHub Actions" link:
 
-1. Go to "My Account" by clicking on the account icon at the top right.  Go
-   to the "Security" tab and click on the "Generate" button after entering a
-token name:
+<img alt="Configure with GitHub Actions" src=img/sonarcloud_choose_method.png>
 
-   <img alt="Generate token" src=img/sonarcloud_2.png>
 
-   Copy the generated token.
+Choose Maven for your build framework and follow the instructions that are
+displayed.  When you modify the pom.xml file with additional properties for
+SonarCould, note that there already is a properties section so don't add a
+new section.  Just add the additional properties to the existing section.
 
-1. Now head over to your GitHub repository and go to Settings > Secrets >
-   Actions.  Then click on the "New repository secret" button:
+Also, it is going to ask you add a new build.yml file to your workflows.  We
+want this job to run as part of our maven-ci.yml CI test, so instead of
+creating a new file, just add the "build" job to the end of the jobs list in
+maven-ci.yml.  
 
-   <img alt="New repository secret" src=img/sonarcloud_3.png>
+Also, in maven-ci.yml, make the following changes to the "build" job:
 
-   Paste your generated token in the secret box and name it SONAR_TOKEN.
-
-   <img alt="Register SONAR_TOKEN on GitHub" src=img/sonarcloud_4.png>
-
-1. On SonarCloud, go to the "Information" menu and copy the "Project Key":
-
-   <img alt="Copy project key" src=img/sonarcloud_5.png>
-
-1. Head back to your GitHub repository again and open
-   sonar-project.properties.  Paste the Project Key that you copied from
-SonarCloud after the "sonar.projectKey=" entry and then commit and push.  
+1. Replace the checkout action with the cache action like we did for the
+   "update_dependency_graph" job:
 
    ```
-   # The Project Key and Organization Key generated when setting up the project on SonarQube
-   # Avaiable on the "Information" menu on the sonarcloud.io project page
-   sonar.projectKey=
-   sonar.organization=cs1632
-
-   # relative paths to source directories. More details and properties are described
-   # in https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/ 
-   sonar.sources=src
-   sonar.java.binaries=target/classes
+   - name: Restore cached build
+     uses: actions/cache@v3
+     with:
+       key: cached-build-${{github.sha}}
+       path: .
    ```
 
-1. Now you are finally ready to add a job to run SonarQube tests as now it
-   know how to locate your project on SonarCloud and access it using your
-token.  Open the maven-ci.yml workflow file to add the following job at the bottom:
-
+2. Also order the "build" job after the "maven_test" job so that the cache
+   is available by the time it runs:
    ```
-   sonarqube_test:
-    
-     needs: [maven_test]
-
-     runs-on: ubuntu-latest
-
-     permissions:
-       contents: read
-
-     steps:
-
-     - name: Restore cached build
-       uses: actions/cache@v3
-       with:
-         key: cached-build-${{github.sha}}
-         path: .
-
-     - name: SonarQube Scan
-       uses: sonarsource/sonarqube-scan-action@master
-       env:
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-         SONAR_HOST_URL: https://sonarcloud.io
+   needs: [maven_test]  # Enforces that maven_test runs first
    ```
 
-   This will trigger a new Maven CI run:
+Once you commit and push the above file changes, this will trigger a new
+Maven CI run:
 
-   <img alt="Maven CI with SonarQube" src=img/sonarcloud_6.png>
+ <img alt="Maven CI with SonarQube" src=img/sonarcloud_6.png>
 
-   Note how both the "update_dependence_graph" job and "sonarqube_test" jobs
+Note how both the "update_dependence_graph" job and "sonarqube_test" jobs
 are dependent open the "maven_test" job (because maven_test generates the
 build cache which is needed by both jobs).  But these two jobs can run in
 parallel.
 
-1. Now head over to SonarCloud and view the report generated by the run:
+Now head over to SonarCloud and view the report generated by the run:
 
-   <img alt="SonarQube report" src=img/sonarcloud_7.png>
+<img alt="SonarQube report" src=img/sonarcloud_7.png>
 
 ## Part 2: Dockers
 
-**GitHub Classroom Link:** TBD
+**GitHub Classroom Link:** https://classroom.github.com/a/Gbc_tYpY
 
 In Part 2, we will use Docker to test and deploy the Rent-A-Cat website that
 we tested in Deliverable 3.  We will test the website using the Selenium
@@ -891,19 +857,19 @@ download and install a web driver that matches your current Chrome browser
 (hooray!).  You can invoke Selenium Manager as follows, if you use Windows:
    
    ```
-   selenium-manager\windows\selenium-manager.exe --browser chrome
+   selenium\manager\windows\selenium-manager.exe --browser chrome
    ```
 
    If you use MacOS:
 
    ```
-   selenium-manager/macos/selenium-manager --browser chrome
+   selenium/manager/macos/selenium-manager --browser chrome
    ```
 
    If you use Linux:
 
    ```
-   selenium-manager/linux/selenium-manager --browser chrome
+   selenium/manager/linux/selenium-manager --browser chrome
    ```
 
 ### Do some sanity tests
@@ -1083,15 +1049,7 @@ selenium/src/test/java/edu/pitt/cs.
 
 You need to do these three things though in D3Test.java:
 
-1. Get rid of this line (or similar) in @Before setup():
-
-   ```
-   System.setProperty("webdriver.chrome.driver", "Chrome/chromedriver-win32.exe");
-   ```
-
-   Now the Selenium Manager takes care of the web driver installation.
-
-1. Replace the root URL of the web pages accessed with "localhost:8080".  
+1. Replace the root URL of the web pages accessed with "http://localhost:8080".  Please make sure you use http:// and not https://.
 
 1. Remove the tests that fail because they trigger defects on the web app
    (remember the tests whose names start with DEFECT?).
@@ -1101,32 +1059,6 @@ Make sure everything passes with:
 ```
 mvn test
 ```
-
-If you get a compile error that looks like this:
-
-```
-incompatible types: int cannot be converted to java.time.Duration
-```
-
-Please do the following:
-
-1. Add this import to the list of imports:
-
-   ```
-   import java.time.Duration;
-   ```
-
-1. Replace all instances where the compiler complains that seconds are
-   expressed as an int to the following expression (with 30 replaced with
-the desired seconds):
-
-   ```
-   Duration.ofSeconds(30)
-   ```
-
-I had to update the Selenium version number on the POM file to the most
-recent one to enable the Selenium Manager and Selenium is not backwards
-compatible, sorry.
 
 ### Add CI Test Workflow
 
@@ -1396,7 +1328,7 @@ Next, copy the "Install from the command line" text from your GitHub package
 page, which was in my case:
 
 ```
-docker pull ghcr.io/cs1632/supplementary-exercise-4-dockers-wonsunahn:main
+docker pull ghcr.io/cs1632/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
 ```
 
 Paste it on a terminal to run it.  This will pull the published image on to
