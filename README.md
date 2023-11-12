@@ -23,9 +23,9 @@
 - [Groupwork Plan](#groupwork-plan)
 
 # CS 1632 - Software Quality Assurance
-Summer Semester 2023 - Supplementary Exercise 4
+Fall Semester 2023 - Supplementary Exercise 4
 
-* DUE: August 8 (Tuesday), 2023 11:30 AM
+* DUE: December 1 (Friday), 2023 11:59 PM
 
 ## Description
 
@@ -703,7 +703,7 @@ the pom.xml file and add the below text after the \<scm\>...\</scm\> element:
     <repository>
       <id>github</id>
       <name>GitHub Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/CS1632/supplementary-exercise-4-ci-cd-junit-wonsunahn</url>
+      <url>https://maven.pkg.github.com/CS1632/supplementary-exercise-4-ci-cd-pipelines-wonsunahn</url>
     </repository>
   </distributionManagement>
 ```
@@ -718,7 +718,7 @@ reason).  For example, if you PittID was wahn (like mine), please change it
 to:
 
 ```
-<artifactId>cs1632-cicd-junit-wahn</artifactId>
+<artifactId>cs1632-cicd-pipelines-wahn</artifactId>
 ```
 
 Now we are ready to create a new release to see if this works!  Go to the
@@ -851,10 +851,7 @@ fail during deployment.
 
 1. Please install the Chrome web browser: https://www.google.com/chrome/
 
-1. Please install the Chrome web driver.  The Selenium people just recently
-   announced a new tool called Selenium Manager that can automatically
-download and install a web driver that matches your current Chrome browser
-(hooray!).  You can invoke Selenium Manager as follows, if you use Windows:
+1. Please install/update the Chrome web driver.  Sorry, this exercise only works on Chrome not Firefox.
    
    ```
    selenium\manager\windows\selenium-manager.exe --browser chrome
@@ -886,8 +883,8 @@ The output from this command should end in these two lines:
 
 ```
 ...
-2023-7-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-7-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
+2023-10-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
 ```
 
 Note this starts the Tomcat web server listening on port 8080.  Try opening
