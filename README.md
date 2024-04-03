@@ -12,9 +12,9 @@
 - [Groupwork Plan](#groupwork-plan)
 
 # CS 1632 - Software Quality Assurance
-Fall Semester 2023 - Supplementary Exercise 4
+Spring Semester 2024 - Supplementary Exercise 4
 
-* DUE: December 1 (Friday), 2023 11:59 PM
+* DUE: April 12 (Friday), 2024 11:59 PM
 
 ## Description
 
@@ -124,8 +124,8 @@ The output from this command should end in these two lines:
 
 ```
 ...
-2023-10-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-10-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
+2024-03-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
 ```
 
 Note this starts the Tomcat web server listening on port 8080.  Try opening
@@ -370,12 +370,13 @@ create a headless Chrome in the @Before setUp():
     driver = new ChromeDriver(options);
 ```
 
-Commit and push all these changes and the Docker CI workflow will trigger
-immediately.  Now, most likely, all the workflow will be successful.  For
-good measure, let's try running the workflow a few more times manually by
-triggering it using the "Run workflow" button.  You will notice that every
-so often the workflow will fail.  If you peek inside a failing run, you will
-see something like this at the end of mvn test:
+Please do the same for ConnectTest.java, or you can choose to remove that test
+entirely since it is subsumed by D3Test.  Commit and push all these changes and
+the Docker CI workflow will trigger immediately.  Now, most likely, all the
+workflow will be successful.  For good measure, let's try running the workflow
+a few more times manually by triggering it using the "Run workflow" button.
+You will notice that every so often the workflow will fail.  If you peek inside
+a failing run, you will see something like this at the end of mvn test:
 
 ```
 Results :
