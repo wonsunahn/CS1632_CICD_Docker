@@ -528,11 +528,14 @@ jobs:
 
 The workflow publishes the web server Docker image to ghcr.io (the GitHub
 Docker image registery).  The docker/build-push-action@v3 GitHub action does
-all the heavy lifting.  Once this workflow is pushed, trigger it manually
-using the "Run workflow" button.  After it completes, go to the "<> Code"
-tab and you should see a new package in the Packages section on the bottom
-right.  If you click on the package link, you should see something like the
-below:
+all the heavy lifting.
+
+Once this workflow is committed and pushed, trigger it by creating a new
+release on the "<> Code" tab.  Add a tag by clicking on the "Choose a tag" drop
+down, such as "v1.2" (since that is the version number in the pom.xml file).
+After the worflow completes, go to the "<> Code" tab and you should see a new
+package in the Packages section on the bottom right.  If you click on the
+package link, you should see something like the below:
 
 <img alt="Published Docker package" src=img/docker_publish.png>
 
