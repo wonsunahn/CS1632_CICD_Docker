@@ -339,7 +339,7 @@ jobs:
           cache: maven
 
       - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Install Chrome Web Browser
         run: sudo apt-get -y install google-chrome-stable
@@ -492,7 +492,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Docker buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       # Login against a Docker registry
       # https://github.com/docker/login-action
@@ -566,11 +566,10 @@ Next, copy the "Install from the command line" text from your GitHub package
 page, which was in my case:
 
 ```
-docker pull ghcr.io/cs1632/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
+docker pull ghcr.io/cs1632-spring2024/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
 ```
 
-After replacing "supplementary-exercise-4-ci-cd-dockers-wonsunahn" with the name
-of your repository, run it on the terminal.  This will pull the published image
+Then your commandline on the terminal.  This will pull the published image
 on to your Docker Desktop.  If you check the "Images" menu, you will see a new
 image created:
 
