@@ -168,10 +168,10 @@ Create a Dockerfile at the root of your repository with the following content:
 
 ```
 # specify base image
-FROM openjdk:8-jdk-alpine
+FROM adoptopenjdk/openjdk11:slim
 
 # install Maven on top of base image
-RUN apk update && apk add maven
+RUN apt-get update && apt-get install -y --no-install-recommends maven
 
 # define working directory
 WORKDIR /app
@@ -187,15 +187,14 @@ EXPOSE 8080
 CMD ["/bin/sh", "-c", "mvn spring-boot:run"]
 ```
 
-The description of the base image openjdk:8-jdk-alpine can be found here:
-https://hub.docker.com/layers/library/openjdk/8-jdk-alpine/images/sha256-a3562aa0b991a80cfe8172847c8be6dbf6e46340b759c2b782f8b8be45342717?context=explore
+The description of the base image adoptopenjdk/openjdk11:ubi can be found here:
 
-You can see that the image size is only 70 MB, and most of it is due to the
-OpenJDK 8 installation.  With the size of apps today, 70 MB is not a big
-price to pay for reliable testing and deployment.
+https://hub.docker.com/r/adoptopenjdk/openjdk11
 
 Base images of all imaginable OS versions and with all widely used packages
-can be found at Docker Hub (https://hub.docker.com/search).
+can be found at Docker Hub:
+
+https://hub.docker.com/search
 
 For our image, we add the Maven build system and copy over files required to
 launch our web app.  We also expose TCP port 8080 to the outside world since
@@ -332,10 +331,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up JDK 8
+      - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
-          java-version: '8'
+          java-version: '11'
           distribution: 'temurin'
           cache: maven
 
