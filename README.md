@@ -12,9 +12,9 @@
 - [Groupwork Plan](#groupwork-plan)
 
 # CS 1632 - Software Quality Assurance
-Spring Semester 2024 - Supplementary Exercise 4
+Summer Semester 2024 - Supplementary Exercise 4
 
-* DUE: April 12 (Friday), 2024 11:59 PM
+* DUE: August 1 (Thursday), 2024 11:59 PM
 
 ## Description
 
@@ -124,8 +124,8 @@ The output from this command should end in these two lines:
 
 ```
 ...
-2024-03-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2024-03-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
+2024-07-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-07-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
 ```
 
 Note this starts the Tomcat web server listening on port 8080.  Try opening
@@ -569,7 +569,7 @@ Next, copy the "Install from the command line" text from your GitHub package
 page, which was in my case:
 
 ```
-docker pull ghcr.io/cs1632-spring2024/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
+docker pull ghcr.io/cs1632-Summer2024/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
 ```
 
 Then your commandline on the terminal.  This will pull the published image
@@ -585,17 +585,15 @@ your browser, it should work as expected.
 
 # Submission
 
-I expect each of you to go through this exercise and then work on tasks that
-you were not able to complete together.  When you have done all the tasks
-you can, please submit "Supplementary Exercise 4 Report" on GradeScope.  The
-report consists of "Yes" or "No" questions on whether you were able to
-complete a task and reflections.  If either one of you in a group was not
-able to complete a task, please mark "No".
+When you have done all the tasks you can, please submit "Supplementary Exercise
+4 Report" on GradeScope.  The report consists of "Yes" or "No" questions on
+whether you were able to complete a task and reflections.  If you were not able
+to complete a task, please mark "No".  For the tasks that you said "No", I
+expect you to explain the issue that prevented you from fulfilling the task on
+the reflections questions at the end of Part 1 and Part 2.
 
 # Groupwork Plan
 
 I expect each group member to experience CI/CD pipelines.  I created
 individual repositories for each of you, so please work on your own
-repositories to implement the pipelines.  After both of you are done,
-compare the YAML files that each of you wrote.  Discuss, resolve any
-differences, and submit the GitHub repository of your choice.
+repositories to implement the pipelines.  
