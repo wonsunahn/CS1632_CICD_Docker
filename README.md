@@ -204,12 +204,11 @@ created out of this image.  Lastly, we define the command that will be
 executed by default when the image is launched in a container, which is "mvn
 spring-boot:run".
 
-Now let's try creating a Docker container out of this image to test it.
-There is a convenient tool for this called docker-compose.  The
-docker-compose tool knows how to compose one or more Docker containers and
-network them together into a distributed system.  It is configured using
-another file in YAML format named docker-compose.yaml.  In our case, we just
-have one container so it is rather simple:
+Now let's try creating a Docker container out of this image to test it.  By
+passing the "compose" argument to the docker tool, we can compose one or more
+Docker containers and network them together into a distributed system.  It is
+configured using another file in YAML format named docker-compose.yaml.  In our
+case, we just have one container so it is rather simple:
 
 ```
 version: '3'
@@ -243,10 +242,10 @@ your web browser and confirming that the server is not found.
 
 Now let's first start Docker Desktop, which will start Docker Engine
 included in the application.  After it is running, invoke the
-docker-compose tool to bring up the container:
+"docker compose up" to bring up the container:
 
 ```
-docker-compose up
+docker compose up
 ```
 
 You should soon see the image registered on Docker Desktop:
@@ -266,7 +265,7 @@ appears when you hover over the container.  Or you can do on the
 commandline:
 
 ```
-docker-compose down
+docker compose down
 ```
 
 You may also go to the "Images" menu and delete the image if you wish to do
@@ -348,7 +347,7 @@ jobs:
         run: selenium/manager/linux/selenium-manager --browser chrome
 
       - name: Launch Web Service
-        run: docker-compose up -d
+        run: docker compose up -d
 
       - name: Run Selenium Tests
         run: cd selenium && mvn test
@@ -404,9 +403,9 @@ change every time the workflow is run.  What's happening?  There seems to be
 an issue with connecting or interacting with the web server, and it does not
 seem to be an issue with the web app itself.
 
-Let's go back to our docker-ci.yml file.  The step "docker-compose up -d"
+Let's go back to our docker-ci.yml file.  The step "docker compose up -d"
 includes an option "-d" that we didn't use before.  The "-d" option is short
-for "detached" and allows docker-compose to execute detached from the
+for "detached" and allows docker compose to execute detached from the
 terminal so that the commandline can immediately return and continue
 executing the next steps (you can try it yourself on a terminal if you wish
 to).  That means that by the time you get to the Selenium tests, the
