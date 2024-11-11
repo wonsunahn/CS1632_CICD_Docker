@@ -541,13 +541,10 @@ package link, you should see something like the below:
 ### Pull published Docker image and launch from desktop
 
 Since your repository is private, you need to authenticate to your GitHub
-repository before pulling the package.  You will use the PAT (Personal
-Authentication Token) that you generated previously for this purpose.  TO do
-so, you need to add permissions to access packages to the PAT.  On GitHub,
-go to Account > Settings > Developer Settings > Personal Access Tokens >
-Tokens (classic) to find your PAT and check write:packages (which should
-automatically check read:packages as well).  If you forgot the PAT string,
-click on "Regenerate Token" to obtain the string again.
+repository before pulling the package.  You can use the PAT (Personal
+Authentication Token) that you generated previously in Part 1 for this purpose.
+If have not yet generated the token, please refer to the [Deploy Maven package
+and use in your Maven project](#deploy-maven-package-and-use-in-your-maven-project) section in Part 1.
 
 Now on the commandline do:
 
@@ -568,7 +565,7 @@ Next, copy the "Install from the command line" text from your GitHub package
 page, which was in my case:
 
 ```
-docker pull ghcr.io/cs1632-Summer2024/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
+docker pull ghcr.io/cs1632-Fall2024/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
 ```
 
 Then your commandline on the terminal.  This will pull the published image
@@ -590,9 +587,3 @@ whether you were able to complete a task and reflections.  If you were not able
 to complete a task, please mark "No".  For the tasks that you said "No", I
 expect you to explain the issue that prevented you from fulfilling the task on
 the reflections questions at the end of Part 1 and Part 2.
-
-# Groupwork Plan
-
-I expect each group member to experience CI/CD pipelines.  I created
-individual repositories for each of you, so please work on your own
-repositories to implement the pipelines.  
