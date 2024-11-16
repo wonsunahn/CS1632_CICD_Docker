@@ -53,9 +53,9 @@ function listCats() {
 	var listing = '<ul class="list-group">\n';
 	list.forEach(function(cat, index) {
 		if (cat.rented === false) {
-			listing += '<li class="list-group-item">ID ' + cat.id + '. ' + cat.name + '</li>\n';
+			listing += '<li class="list-group-item" id="cat-id' + cat.id + '">ID ' + cat.id + '. ' + cat.name + '</li>\n';
 		} else {
-			listing += '<li class="list-group-item">Rented out</li>\n';
+			listing += '<li class="list-group-item" id="cat-id' + cat.id + '">Rented out</li>\n';
 		}
 	})
 	listing += '</ul>\n';
@@ -118,6 +118,8 @@ window.onload = function() {
 	for (var i = 0; i < list.length; i++) {
 		if (getCookie(i+1) === "true") {
 			list[i].rented = true;
+		} else {
+			list[i].rented = false;
 		}
 	}
 	listCats();

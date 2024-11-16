@@ -16,7 +16,7 @@
 #
 # This sample has manual_scaling set to 1.
 #
-runtime: java11
+runtime: java17
 
 handlers:
 - url: /.*

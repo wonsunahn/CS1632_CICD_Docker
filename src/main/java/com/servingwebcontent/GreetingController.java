@@ -83,7 +83,7 @@ public class GreetingController {
 		content += "<input type=\"text\" class=\"form-control\" id=\"catnips\">\n";
 		content += "</div>\n";
 		content += "<div class=\"col-xs-2 text-left\">\n";
-		content += "<button class=\"btn btn-primary\" onclick=\"feedSubmit()\">Feed</button>\n";
+		content += "<button class=\"btn btn-primary\" onclick=\"setTimeout(feedSubmit, 1000)\">Feed</button>\n";
 		content += "</div>\n";
 		content += "<div class=\"col-xs-3 text-left\" id=\"feedResult\">\n";
 		content += "</div>\n";
