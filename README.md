@@ -14,7 +14,7 @@
 # CS 1632 - Software Quality Assurance
 Summer Semester 2024 - Supplementary Exercise 4
 
-* DUE: August 1 (Thursday), 2024 11:59 PM
+* DUE: November 22 (Friday), 2024 11:59 PM
 
 ## Description
 
