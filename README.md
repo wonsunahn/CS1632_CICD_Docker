@@ -9,12 +9,11 @@
     + [Add Docker Publish Workflow](#add-docker-publish-workflow)
     + [Pull published Docker image and launch from desktop](#pull-published-docker-image-and-launch-from-desktop)
 - [Submission](#submission)
-- [Groupwork Plan](#groupwork-plan)
 
 # CS 1632 - Software Quality Assurance
-Summer Semester 2024 - Supplementary Exercise 4
+Spring Semester 2025 - Supplementary Exercise 4
 
-* DUE: November 22 (Friday), 2024 11:59 PM
+* DUE: April 11 (Friday), 2025 11:59 PM
 
 ## Description
 
@@ -124,8 +123,8 @@ The output from this command should end in these two lines:
 
 ```
 ...
-2024-07-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2024-07-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
+2025-03-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-03-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
 ```
 
 Note this starts the Tomcat web server listening on port 8080.  Try opening
@@ -565,7 +564,7 @@ Next, copy the "Install from the command line" text from your GitHub package
 page, which was in my case:
 
 ```
-docker pull ghcr.io/cs1632-Fall2024/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
+docker pull ghcr.io/cs1632-Spring-2025/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
 ```
 
 Then your commandline on the terminal.  This will pull the published image
