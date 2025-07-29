@@ -11,9 +11,9 @@
 - [Submission](#submission)
 
 # CS 1632 - Software Quality Assurance
-Spring Semester 2025 - Supplementary Exercise 4
+Summer Semester 2025 - Supplementary Exercise 4
 
-* DUE: April 11 (Friday), 2025 11:59 PM
+* DUE: August 5 (Tuesday), 2025 8:30 AM
 
 ## Description
 
@@ -562,7 +562,7 @@ Next, copy the "Install from the command line" text from your GitHub package
 page, which was in my case:
 
 ```
-docker pull ghcr.io/cs1632-Spring-2025/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
+docker pull ghcr.io/cs1632-Summer2025/supplementary-exercise-4-ci-cd-dockers-wonsunahn:main
 ```
 
 Then your commandline on the terminal.  This will pull the published image
