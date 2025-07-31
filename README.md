@@ -134,7 +134,7 @@ the web app on a browser using the URL:
 http://localhost:8080/
 ```
 
-You should our Rent-A-Cat website.  Now leave the server running and open
+You should see our Rent-A-Cat website.  Now leave the server running and open
 another terminal and then invoke Maven test after cd'ing into the selenium
 directory.
 
@@ -281,6 +281,18 @@ Deliverable 3, so let's just import D3Test.java from that project into
 selenium/src/test/java/edu/pitt/cs.
 
 You need to do these three things though in D3Test.java:
+
+1. If you are using the Firefox driver (which likely you are), replace it with the Chrome driver.  That is, replace the following line:
+
+   ```
+   driver = new FirefoxDriver();
+   ```
+
+   with this line:
+
+   ```
+   driver = new ChromeDriver();
+   ```
 
 1. Replace the root URL of the web pages accessed with "http://localhost:8080".  Please make sure you use http:// and not https://.
 
