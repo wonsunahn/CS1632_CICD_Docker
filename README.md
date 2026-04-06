@@ -11,9 +11,9 @@
 - [Submission](#submission)
 
 # CS 1632 - Software Quality Assurance
-Fall Semester 2025 - Supplementary Exercise 4
+Spring Semester 2026 - Supplementary Exercise 4
 
-* DUE: November 19 (Wednesday), 2025 before start of class
+* DUE: April 21 (Tuesday), 2026 before start of class
 
 ## Description
 
@@ -123,8 +123,8 @@ The output from this command should end in these two lines:
 
 ```
 ...
-2025-10-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2025-10-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
+2026-3-25 18:33:15.380  INFO 21180 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2026-3-25 18:33:15.395  INFO 21180 --- [           main] c.s.ServingWebContentApplication         : Started ServingWebContentApplication in 2.46 seconds (JVM running for 2.852)
 ```
 
 Note this starts the Tomcat web server listening on port 8080.  Try opening
@@ -574,7 +574,7 @@ Next, copy the "Install from the command line" text from your GitHub package
 page, which was in my case:
 
 ```
-docker pull ghcr.io/cs1632-Fall2025/supplementary-exercise-4-dockers-wonsunahn:main
+docker pull ghcr.io/cs1632-Spring2026/supplementary-exercise-4-dockers-wonsunahn:main
 ```
 
 Then your commandline on the terminal.  This will pull the published image
