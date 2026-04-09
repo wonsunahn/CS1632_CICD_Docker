@@ -8,30 +8,7 @@
   <packaging>jar</packaging>
 
   <name>cs1632-cicd-junit</name>
-  <description>An exercise demonstrating CI/CD through github actions.  It uses JUnit for unit testing.</description>
-  <url>https://github.com/wonsunahn/CS1632_CICD_Docker</url>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
-
-  <developers>
-    <developer>
-      <name>Wonsun Ahn</name>
-      <email>wahn@pitt.edu</email>
-      <organization>University of Pittsburgh</organization>
-      <organizationUrl>https://www.pitt.edu/</organizationUrl>
-    </developer>
-  </developers>
-
-  <scm>
-    <connection>scm:git:git://github.com/wonsunahn/CS1632_CICD_Docker.git</connection>
-    <developerConnection>scm:git:ssh://github.com:wonsunahn/CS1632_CICD_Docker.git</developerConnection>
-    <url>http://github.com/wonsunahn/CS1632_CICD_Docker/tree/main</url>
-  </scm>
+  <description>An exercise demonstrating CI/CD through github actions.  It uses Docker for containerization.</description>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
