@@ -1,0 +1,5 @@
+name: my-org/thymeleaf-xss
+version: 0.0.1
+dependencies:
+  codeql/java-all: "*"
+  codeql/java-queries: "*"

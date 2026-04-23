@@ -83,7 +83,7 @@ public class GreetingController {
 		content += "<input type=\"text\" class=\"form-control\" id=\"catnips\">\n";
 		content += "</div>\n";
 		content += "<div class=\"col-xs-2 text-left\">\n";
-		content += "<button class=\"btn btn-primary\" onclick=\"setTimeout(feedSubmit, 1000)\">Feed</button>\n";
+		content += "<button class=\"btn btn-primary\" onclick=\"feedSubmit()\">Feed</button>\n";
 		content += "</div>\n";
 		content += "<div class=\"col-xs-3 text-left\" id=\"feedResult\">\n";
 		content += "</div>\n";
@@ -135,6 +135,29 @@ public class GreetingController {
 		
 		content += "<script>reset();</script>\n";
 		
+		model.addAttribute("content", content);
+		return "index";
+	}
+
+	/**
+	 * DELIBERATELY VULNERABLE ENDPOINT — Reflected XSS
+	 * The 'keyword' query parameter flows directly into HTML output
+	 * without any encoding or sanitization.
+	 *
+	 * CodeQL will flag this under: java/xss (XSS through HTTP request parameter)
+	 */
+	@GetMapping("/search")
+	public String search(@RequestParam(name = "keyword", required = false, defaultValue = "") String keyword, Model model) {
+		String content = "<h4>Cats available for rent:</h4>\n";
+		content += "<div class=\"text-left\" id=\"listing\">\n";
+		content += "</div>\n";
+
+		// Unsanitized user input embedded directly into HTML
+		content += "<div class=\"row\">\n";
+		content += "<h4>Search results for: " + keyword + "</h4>\n";
+		content += "</div>\n";
+		content += "<p>No cats found matching your query.</p>\n";
+
 		model.addAttribute("content", content);
 		return "index";
 	}
