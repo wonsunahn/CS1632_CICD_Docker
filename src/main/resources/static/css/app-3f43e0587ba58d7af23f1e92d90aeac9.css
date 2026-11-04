@@ -6686,12 +6686,12 @@ form.link {
     display: inline;
 }
 .logo {
-    width: 100%;
+    width: 700px;
     height: 284px;
     display: inline-block;
     margin-bottom: 1em;
     background-image: url(/images/cats-banner.jpg);
-    background-size: 512px 284px;
+    background-size: 700px 284px;
     background-position: center;
 	background-repeat: repeat-x
 }

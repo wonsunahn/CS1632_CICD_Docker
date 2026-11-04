@@ -50,7 +50,7 @@ function catAvailable(catName) {
 }
 	
 function listCats() {
-	var listing = '<ul class="list-group">\n';
+	var listing = '<ul aria-label="Cat names" class="list-group">\n';
 	list.forEach(function(cat, index) {
 		if (cat.rented === false) {
 			listing += '<li class="list-group-item" id="cat-id' + cat.id + '">ID ' + cat.id + '. ' + cat.name + '</li>\n';

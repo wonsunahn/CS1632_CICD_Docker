@@ -1,5 +1,7 @@
 package com.servingwebcontent;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,7 @@ public class GreetingController {
 		content += "<div class=\"text-left\" id=\"listing\">\n";
 		content += "</div>\n";
 		
-		content += "  <ol>\r\n"
+		content += "  <ol aria-label=\"Cat photos\">\r\n"
 				+ "    <li><img src=\"/images/cat1.jpg\" alt=\"Jennyanydots\" height=\"300\" width=\"300\"></li>\r\n"
 				+ "    <br>\r\n"
 				+ "    <li><img src=\"/images/cat2.jpg\" alt=\"Old Deuteronomy\" height=\"300\" width=\"300\"></li>\r\n"
@@ -81,7 +83,7 @@ public class GreetingController {
 		content += "<input type=\"text\" class=\"form-control\" id=\"catnips\">\n";
 		content += "</div>\n";
 		content += "<div class=\"col-xs-2 text-left\">\n";
-		content += "<button class=\"btn btn-primary\" onclick=\"feedSubmit()\">Feed</button>\n";
+		content += "<button class=\"btn btn-primary\" onclick=\"setTimeout(feedSubmit, 7000)\">Feed</button>\n";
 		content += "</div>\n";
 		content += "<div class=\"col-xs-3 text-left\" id=\"feedResult\">\n";
 		content += "</div>\n";
