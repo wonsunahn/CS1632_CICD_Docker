@@ -7,7 +7,7 @@
   <version>1.2</version>
   <packaging>jar</packaging>
 
-  <name>cs1632-cicd-junit</name>
+  <name>cs1632-cicd-docker</name>
   <description>An exercise demonstrating CI/CD through github actions.  It uses Docker for containerization.</description>
 
   <properties>
